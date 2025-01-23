@@ -1,3 +1,4 @@
+# first version of the pipeline
 name: Playwright Tests
 on:
   push:
