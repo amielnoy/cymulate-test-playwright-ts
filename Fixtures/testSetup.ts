@@ -9,7 +9,6 @@ import {WafReportsPage} from "../Pages/WafReports/WafReportsPage";
 import {WafReportAssessmentSubPage} from "../Pages/WafReports/WafReportAssessmentSubPage";
 import {GenerateReportSubPage} from "../Pages/WafReports/GenerateReportSubPage";
 
-// Load environment variables from .env file
 dotenv.config();
 
 const test = base.extend<{
