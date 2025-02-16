@@ -1,4 +1,4 @@
-import { test as base,expect,Page } from '@playwright/test';
+import { test as base,expect } from '@playwright/test';
 // @ts-ignore
 import dotenv from 'dotenv';
 import {LoginBuildingBlock} from "../BuildingBlocks/loginBuildingBlock";
