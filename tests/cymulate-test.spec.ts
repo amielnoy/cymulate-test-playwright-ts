@@ -36,9 +36,8 @@ test.describe('Report History Tests', () => {
     await downloadReport(mainPage,wafReportsPage);
     const expectedLineInDownloadedFile = "ekslabs.cymulatedev.com";
     const downloadDir = getDownloadFolderPath(); // Adjust the path as needed
-    const lastDownloadedFile = getLastDownloadedFileName(downloadDir);
-    const lastDownloadedFileFullPath = path.join(getDownloadFolderPath(),lastDownloadedFile)
-
+    const lastDownloadedFile = getLastDownloadedFileName(downloadDir) ;
+    const lastDownloadedFileFullPath = path.join(getDownloadFolderPath(),lastDownloadedFile!)
     const actualTestedFileText=readFileContent(lastDownloadedFileFullPath);
     expect(actualTestedFileText).toContain(expectedLineInDownloadedFile)
   });
