@@ -39,7 +39,7 @@ test.describe('Report History Tests', () => {
     const lastDownloadedFile = getLastDownloadedFileName(downloadDir);
     const lastDownloadedFileFullPath = path.join(getDownloadFolderPath(),lastDownloadedFile)
 
-    const actualTestedFileText=readFileContent(lastDownloadedFileFullPath);
+    const actualTestedFileText=await readFileContent(lastDownloadedFileFullPath);
     expect(actualTestedFileText).toContain(expectedLineInDownloadedFile)
   });
 })
