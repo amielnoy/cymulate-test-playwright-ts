@@ -18,7 +18,7 @@ export class LoginBuildingBlock {
     }
 
 
-    async signIn() {
+    async signIn(): Promise<void> {
         const email = process.env.EMAIL;
         const password = process.env.PASSWORD;
 

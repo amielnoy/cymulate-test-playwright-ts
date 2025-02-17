@@ -52,10 +52,4 @@ export class BasePage {
             return await locator.isEnabled();
         });
     }
-
-    async getElementAttribute(locator: Locator, attribute: string): Promise<string | null> {
-        return await test.step(`Get element attribute: ${attribute}`, async () => {
-            return await locator.getAttribute(attribute);
-        });
-    }
 }
