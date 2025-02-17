@@ -1,5 +1,7 @@
 import * as os from 'os';
 import * as path from 'path';
+import * as fs from 'fs';
+import * as util from 'util';
 
 export function getDownloadFolderPath(): string {
     const homeDir = os.homedir();
@@ -16,9 +18,50 @@ export function getDownloadFolderPath(): string {
     }
 }
 
-try {
-    const downloadPath = getDownloadFolderPath();
-    console.log(`Download folder path: ${downloadPath}`);
-} catch (error) {
-    console.error('Error determining download folder path:', error);
+export function getLastDownloadedFileName(downloadDir: string): string | null {
+    const files = fs.readdirSync(downloadDir);
+
+    if (files.length === 0) {
+        return null;
+    }
+
+    const sortedFiles = files
+        .map(fileName => ({
+            name: fileName,
+            time: fs.statSync(path.join(downloadDir, fileName)).mtime.getTime()
+        }))
+        .sort((a, b) => b.time - a.time);
+
+    return sortedFiles[0].name;
 }
+
+
+/**
+ * Reads the text content of a file by its path.
+ * @param filePath - The path to the file.
+ * @returns {Promise<string>} A promise that resolves to the text content of the file.
+ */
+export function readFileText(filePath: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+        fs.readFile(filePath, 'utf8', (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(data);
+            }
+        });
+    });
+}
+
+const readFileAsync = util.promisify(fs.readFile);
+
+export async function readFileContent(filePath: string): Promise<string> {
+    try {
+        const data = await readFileAsync(filePath, 'utf8');
+        return data;
+    } catch (err) {
+        throw new Error(`Error reading file: ${err.message}`);
+    }
+}
+
+// Example usage:

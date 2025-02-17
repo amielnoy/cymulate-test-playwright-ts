@@ -8,12 +8,13 @@ export class MainPage extends BasePage{
     readonly mainCymulateSubMenuPage: MainCymulateSubMenuPage;
     readonly downloadsSubPage: DownloadsSubPage;
     readonly reportAddedSuccessMessage: Locator;
-    readonly reportAddedToDownloadManagerSuccessMessage: Locator;
+    readonly reportAddedToDownloadManagerStatusMessage: Locator;
 
     constructor(page: Page) {
         super(page);
         this.reportsTabButton = page.getByTestId('link-button-Reports');
         this.reportAddedSuccessMessage=page.locator('notification-container--bottom-left')
+        //this.reportAddedToDownloadManagerStatusMessage=page.getByRole('link', {name: /ekslabs\./})
         this.mainCymulateSubMenuPage=new MainCymulateSubMenuPage(page)
         this.downloadsSubPage = new DownloadsSubPage(page)
     }
