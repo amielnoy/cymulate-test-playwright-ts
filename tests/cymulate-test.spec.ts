@@ -35,10 +35,12 @@ test.describe('Report History Tests', () => {
     await wafReportsPage.wafReportAssessmentSubPage.clickGenerateReportButton();
     await downloadReport(mainPage,wafReportsPage);
     const expectedLineInDownloadedFile = "ekslabs.cymulatedev.com";
-    const downloadDir = getDownloadFolderPath(); // Adjust the path as needed
-    const lastDownloadedFile = getLastDownloadedFileName(downloadDir) ;
-    const lastDownloadedFileFullPath = path.join(getDownloadFolderPath(),lastDownloadedFile!)
-    const actualTestedFileText=readFileContent(lastDownloadedFileFullPath);
+    const downloadDir = getDownloadFolderPath();
+
+    const lastDownloadedFile = getLastDownloadedFileName(downloadDir);
+    const lastDownloadedFileFullPath = path.join(getDownloadFolderPath(),lastDownloadedFile)
+    const actualTestedFileText=await readFileContent(lastDownloadedFileFullPath);
+
     expect(actualTestedFileText).toContain(expectedLineInDownloadedFile)
   });
 })
