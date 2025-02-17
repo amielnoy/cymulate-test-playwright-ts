@@ -3,7 +3,6 @@
 
 ## I used here few infra concepts:
 
-
 1.Environment file .env for global settings
 
 2.Setups:
