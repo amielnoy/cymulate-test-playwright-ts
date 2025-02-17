@@ -11,7 +11,7 @@ export class DownloadsSubPage extends BasePage{
         this.downloadCsvReportsButton = page.getByTestId('download-report-button-67b1deeba932a347e5a33032');
     }
 
-    async clickDownloadReportsButton(){
+    async clickDownloadReportsButton(): Promise<void> {
         await test.step('Goto main page', async () => {
             await this.clickElement(this.downloadCsvReportsButton);
         })
