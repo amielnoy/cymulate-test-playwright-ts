@@ -14,11 +14,6 @@ export class MainPage extends BasePage{
         super(page);
         this.reportsTabButton = page.getByTestId('link-button-Reports');
         this.reportAddedSuccessMessage=page.locator('notification-container--bottom-left')
-
-        //.getByRole('link', { name: /ekslabs\./ })
-        //    .getByText('Success');
-        //\nreport added to manager')
-
         this.mainCymulateSubMenuPage=new MainCymulateSubMenuPage(page)
         this.downloadsSubPage = new DownloadsSubPage(page)
     }
