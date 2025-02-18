@@ -1,1 +1,1 @@
-{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[]}
+{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[{"name":"Verify Report History","uid":"13f6c2e9e814eb2b","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"failed","time":{"start":1739871606945,"stop":1739871625258,"duration":18313},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":2,"retriesStatusChange":false,"parameters":["chromium"],"tags":[]}]}
