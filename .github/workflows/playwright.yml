@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-      - allure-github-actions
+      - main-to-merge
 
 jobs:
   test:
@@ -34,6 +34,9 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test --reporter=line,allure-playwright
         continue-on-error: true
+
+      - name: List Allure Results
+        run: ls -la allure-results
 
       - name: Generate Allure Report
         run: |
