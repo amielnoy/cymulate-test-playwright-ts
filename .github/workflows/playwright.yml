@@ -5,10 +5,11 @@ on:
   push:
     branches:
       - main
+      - main-to-merge
   pull_request:
     branches:
       - main
-      - main-to-merge
+
 
 jobs:
   test:
