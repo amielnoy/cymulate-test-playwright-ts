@@ -40,6 +40,9 @@ jobs:
       - name: List Allure Results
         run: ls -la #allure-results
 
+      - name: List Allure Results
+        run: ls -la allure-results
+
       - name: Generate Allure Report
         run: |
           npx allure generate allure-results --clean -o allure-report
