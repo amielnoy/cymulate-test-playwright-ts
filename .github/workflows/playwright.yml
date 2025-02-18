@@ -38,7 +38,7 @@ jobs:
         continue-on-error: true
 
       - name: List Allure Results
-        run: ls -la allure-results
+        run: ls -la #allure-results
 
       - name: Generate Allure Report
         run: |
