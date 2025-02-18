@@ -20,12 +20,16 @@
 ## Installation instructions
 
 1.From the cli use:
-      git clone 
+      git clone https://github.com/amielnoy/cymulate-test-playwright-ts.git
 
 2.invoke terminal(cli) & Run the tests locally:
 npx playwright test tests --headed report=html
 
-End! 
+3.Run github actions pipe line.
+Navigate to:
+https://github.com/amielnoy/cymulate-test-playwright-ts/actions
+
+
 
 
 
