@@ -1,7 +1,10 @@
 import * as os from 'os';
+import * as util from 'util';
 import * as path from 'path';
 import * as fs from 'fs';
-import * as util from 'util';
+import mime from 'mime-types';
+import {expect} from "@playwright/test";
+
 
 export function getDownloadFolderPath(): string {
     const homeDir = os.homedir();
@@ -64,4 +67,7 @@ export async function readFileContent(filePath: string): Promise<string> {
     }
 }
 
-// Example usage:
+export function isTextFile(filePath: string): boolean {
+    const mimeType = mime.lookup(filePath);
+    return mimeType ? mimeType.startsWith('text/') : false;
+}

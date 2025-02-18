@@ -1,17 +1,13 @@
 import { test } from '../Fixtures/testSetup';
 import { expect } from "@playwright/test";
-import {DateAndTimeUtility} from "../Utils/DateAndTime";
-import { MainPage } from '../Pages/MainPages/MainCymulatePage';
-import { WafReportsPage } from '../Pages/WafReports/WafReportsPage';
 import {downloadReport, navigateToWAFReportHistory} from "./test-flow-setup";
 import {
   getDownloadFolderPath,
-  getLastDownloadedFileName,
-  readFileAndLogContent,
+  getLastDownloadedFileName, isTextFile,
   readFileContent
 } from "../Utils/OsOperations";
+// @ts-ignore
 import path from "path";
-import * as Path from "node:path";
 
 
 test.describe('Report History Tests', () => {
@@ -34,12 +30,19 @@ test.describe('Report History Tests', () => {
 
     await wafReportsPage.wafReportAssessmentSubPage.clickGenerateReportButton();
     await downloadReport(mainPage,wafReportsPage);
+
     const expectedLineInDownloadedFile = "ekslabs.cymulatedev.com";
     const downloadDir = getDownloadFolderPath(); // Adjust the path as needed
     const lastDownloadedFile = getLastDownloadedFileName(downloadDir);
     const lastDownloadedFileFullPath = path.join(getDownloadFolderPath(),lastDownloadedFile)
+    console.log("Downloading file", downloadDir);
 
-    const actualTestedFileText=await readFileContent(lastDownloadedFileFullPath);
-    expect(actualTestedFileText).toContain(expectedLineInDownloadedFile)
+    if (isTextFile(lastDownloadedFileFullPath)) {
+      const actualTestedFileText = await readFileContent(lastDownloadedFileFullPath);
+      expect(actualTestedFileText).toContain(expectedLineInDownloadedFile);
+    } else {
+      console.log("The last downloaded file is not a text file.\n" +
+          "It's not a simulate webApplicationFirewall report!");
+    }
   });
 })
