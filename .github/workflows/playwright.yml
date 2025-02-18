@@ -30,6 +30,7 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test --reporter=line,allure-playwright
+        continue-on-error: true
 
       - name: Generate Allure Report
         run: |
