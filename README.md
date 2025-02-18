@@ -14,11 +14,13 @@
 
 6.Composition of sub pages in containing ui Page
 
+7.Github actions pipeline
+
 
 ## Installation instructions
 
 1.From the cli use:
-      git clone
+      git clone 
 
 2.invoke terminal(cli) & Run the tests locally:
 npx playwright test tests --headed report=html
