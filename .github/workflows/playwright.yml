@@ -1,5 +1,6 @@
 name: Playwright Tests with Allure Report
 
+
 on:
   push:
     branches:
