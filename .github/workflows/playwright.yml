@@ -32,7 +32,7 @@ jobs:
         run: npm install -g allure-commandline --save-dev
 
       - name: Run Playwright tests
-        run: npx playwright test --reporter=line,allure
+        run: npx playwright test --reporter=line,allure-playwright
         continue-on-error: true
 
       - name: Generate Allure Report
