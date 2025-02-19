@@ -1,0 +1,5 @@
+DateTimeUtility
+
+Downloading file /Users/amielpeled/Downloads
+The last downloaded file is not a text file.
+It's not a simulate webApplicationFirewall report!

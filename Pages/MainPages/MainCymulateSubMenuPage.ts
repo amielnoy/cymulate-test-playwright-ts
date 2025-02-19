@@ -10,7 +10,7 @@ export class MainCymulateSubMenuPage extends BasePage{
     }
 
     async clickDownloadReportsButton(){
-        await test.step('Goto main page', async () => {
+        await test.step('click download reports button', async () => {
             await this.clickElement(this.downloadReportsButton);
         })
     }

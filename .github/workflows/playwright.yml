@@ -37,11 +37,11 @@ jobs:
         run: npx playwright test --reporter=line,allure-playwright
         continue-on-error: true
 
-      - name: List Allure Results
-        run: ls -la #allure-results
-
-      - name: List Allure Results
-        run: ls -la allure-results
+#      - name: List Allure Results
+#        run: ls -la #allure-results
+#
+#      - name: List Allure Results
+#        run: ls -la allure-results
 
       - name: Generate Allure Report
         run: |
