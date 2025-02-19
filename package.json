@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "report": "allure serve allure-results"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.50.1",
-    "@types/node": "^22.10.7",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^22.13.4",
     "@zerostep/playwright": "^0.1.5",
     "allure-playwright": "^3.2.0"
   },
