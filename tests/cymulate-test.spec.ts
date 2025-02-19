@@ -1,19 +1,19 @@
-import { test } from '../Fixtures/testSetup';
-import { expect } from "@playwright/test";
-import {downloadReport, navigateToWAFReportHistory} from "./test-flow-setup";
+import {test} from '../Fixtures/testSetup'
+import {expect} from '@playwright/test'
+import {downloadReport, navigateToWAFReportHistory} from './test-flow-setup'
 import {
   getDownloadFolderPath,
-  getLastDownloadedFileName, isTextFile,
-  readFileContent
-} from "../Utils/OsOperations";
+  getLastDownloadedFileName,
+  isTextFile,
+  readFileContent,
+} from '../Utils/OsOperations'
 // @ts-ignore
-import path from "path";
-
+import path from 'path'
 
 test.describe('Report History Tests', () => {
-  const expectedAssessmentScore = "100";
-  const expectedAssessmentUrl = "https://ekslabs.cymulatedev.com";
-  const expectedAssessmentStatus = "Completed";
+  const expectedAssessmentScore = '100'
+  const expectedAssessmentUrl = 'https://ekslabs.cymulatedev.com'
+  const expectedAssessmentStatus = 'Completed'
 
   test.beforeEach(async ({page, loginBuildingBlock, mainPage}) => {
     await loginBuildingBlock.signIn();
@@ -29,21 +29,28 @@ test.describe('Report History Tests', () => {
     await expect(wafReportsPage.wafReportAssessmentSubPage.url).toHaveText(expectedAssessmentUrl);
     await expect(wafReportsPage.wafReportAssessmentSubPage.status).toHaveText(expectedAssessmentStatus);
 
-    await wafReportsPage.wafReportAssessmentSubPage.clickGenerateReportButton();
-    await downloadReport(mainPage,wafReportsPage);
+    await wafReportsPage.wafReportAssessmentSubPage.clickGenerateReportButton()
+    await downloadReport(mainPage, wafReportsPage)
 
-    const expectedLineInDownloadedFile = "ekslabs.cymulatedev.com";
-    const downloadDir = getDownloadFolderPath(); // Adjust the path as needed
-    const lastDownloadedFile = getLastDownloadedFileName(downloadDir);
-    const lastDownloadedFileFullPath = path.join(getDownloadFolderPath(),lastDownloadedFile)
-    console.log("Downloading file", downloadDir);
+    const expectedLineInDownloadedFile = 'ekslabs.cymulatedev.com'
+    const downloadDir = getDownloadFolderPath() // Adjust the path as needed
+    const lastDownloadedFile = getLastDownloadedFileName(downloadDir)
+    const lastDownloadedFileFullPath = path.join(
+      getDownloadFolderPath(),
+      lastDownloadedFile,
+    )
+    console.log('Downloading file', downloadDir)
 
     if (isTextFile(lastDownloadedFileFullPath)) {
-      const actualTestedFileText = await readFileContent(lastDownloadedFileFullPath);
-      expect(actualTestedFileText).toContain(expectedLineInDownloadedFile);
+      const actualTestedFileText = await readFileContent(
+        lastDownloadedFileFullPath,
+      )
+      expect(actualTestedFileText).toContain(expectedLineInDownloadedFile)
     } else {
-      console.log("The last downloaded file is not a text file.\n" +
-          "It's not a simulate webApplicationFirewall report!");
+      console.log(
+        'The last downloaded file is not a text file.\n' +
+          "It's not a simulate webApplicationFirewall report!",
+      )
     }
-  });
+  })
 })
