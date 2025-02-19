@@ -51,7 +51,7 @@ export async function downloadReport(mainPage: MainPage, wafReportsPage: WafRepo
 
         await expect(mainPage.reportAddedSuccessMessage).toBeVisible({timeout: GlobalConstants.MEDIUM_TIMEOUT});
         const expectedReportTextLine1 = 'Module - Web Application FirewallAssessment generated at'
-        const expectedReportTextLine2 =  `${dateTimeUtility.getCurrentDate()} ${dateTimeUtility.getCurrentTime()}}`;
+        //const expectedReportTextLine2 =  `${dateTimeUtility.getCurrentDate()} ${dateTimeUtility.getCurrentTime()}}`;
         await expect(mainPage.downloadsSubPage.downloadedCsvReportDateAndTimeLabel).toContainText(expectedReportTextLine1);
         await mainPage.downloadsSubPage.clickDownloadReportsButton();
 }

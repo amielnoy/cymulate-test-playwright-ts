@@ -15,7 +15,7 @@ test.describe('Report History Tests', () => {
   const expectedAssessmentUrl = 'https://ekslabs.cymulatedev.com'
   const expectedAssessmentStatus = 'Completed'
 
-  test.beforeEach(async ({page, loginBuildingBlock, mainPage}) => {
+  test.beforeEach(async ({loginBuildingBlock}) => {
     await loginBuildingBlock.signIn();
   });
 
