@@ -2,7 +2,6 @@ import { Page, Locator, test } from '@playwright/test';
 import { BasePage } from '../BasePage';
 
 export class GenerateReportSubPage extends BasePage {
-    readonly page: Page;
     readonly score: Locator;
     readonly url: Locator;
     readonly status: Locator;
@@ -11,7 +10,6 @@ export class GenerateReportSubPage extends BasePage {
 
     constructor(page: Page) {
         super(page);
-        this.page = page;
         this.csvButton = page.getByRole('button', { name: 'CSV' }).nth(0);
     }
 

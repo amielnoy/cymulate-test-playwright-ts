@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
-    "target": "ESNext",
+        "target": "ESNext",
         "module": "commonjs",
         "moduleResolution": "Node",
         "sourceMap": true,
         "outDir": "../tests-out",
+    }
 }

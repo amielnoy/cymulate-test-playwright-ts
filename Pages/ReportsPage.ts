@@ -3,11 +3,9 @@ import { BasePage } from './BasePage';
 
 export class ReportsPage extends BasePage {
     readonly webApplicationFirewallHistoryButton: Locator;
-    readonly page: Page;
 
     constructor(page: Page) {
         super(page);
-        this.page = page
         // Define a robust locator for the History button using role and data-module attribute
         this.webApplicationFirewallHistoryButton = page.locator('[data-module="waf"]').getByRole('link', { name: 'History' });
     }

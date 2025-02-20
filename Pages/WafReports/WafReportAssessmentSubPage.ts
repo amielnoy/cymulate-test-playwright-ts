@@ -2,7 +2,6 @@ import { Page, Locator, test } from '@playwright/test';
 import { BasePage } from '../BasePage';
 
 export class WafReportAssessmentSubPage extends BasePage {
-    readonly page: Page;
     readonly score: Locator;
     readonly url: Locator;
     readonly status: Locator;
@@ -10,7 +9,6 @@ export class WafReportAssessmentSubPage extends BasePage {
 
     constructor(page: Page) {
         super(page);
-        this.page = page;
         this.score = page.locator('.score-text span.pieChartInfoText span');
         this.url = page.locator('.summary-data .module-summary-title:has-text("URL") + .report-summary-data');
         this.status = page.getByTestId('assessment-status-report');
