@@ -1,4 +1,4 @@
-import {test} from '../Fixtures/testSetup'
+import test from '../Fixtures/testSetup'
 import {expect} from '@playwright/test'
 import {downloadReport, navigateToWAFReportHistory} from './test-flow-setup'
 import {
@@ -15,19 +15,30 @@ test.describe('Report History Tests', () => {
   const expectedAssessmentUrl = 'https://ekslabs.cymulatedev.com'
   const expectedAssessmentStatus = 'Completed'
 
-  test.beforeEach(async ({page, loginBuildingBlock, mainPage}) => {
-    await loginBuildingBlock.signIn();
-  });
+  test.beforeEach(async ({loginBuildingBlock}) => {
+    await loginBuildingBlock.signIn()
+  })
 
-  test('Verify Report History', async ({mainPage, reportsPage, wafReportsPage}) => {
-    await mainPage.getPage().setViewportSize({width: 1920, height: 937});
-    const expectOptions = { timeout: 10000 };
+  test('Verify Report History', async ({
+    mainPage,
+    reportsPage,
+    wafReportsPage,
+  }) => {
+    await mainPage.getPage().setViewportSize({width: 1920, height: 937})
+    const expectOptions = {timeout: 10000}
 
-    await navigateToWAFReportHistory(mainPage, reportsPage, wafReportsPage);
+    await navigateToWAFReportHistory(mainPage, reportsPage, wafReportsPage)
 
-    await expect(wafReportsPage.wafReportAssessmentSubPage.score).toHaveText(expectedAssessmentScore,expectOptions);
-    await expect(wafReportsPage.wafReportAssessmentSubPage.url).toHaveText(expectedAssessmentUrl);
-    await expect(wafReportsPage.wafReportAssessmentSubPage.status).toHaveText(expectedAssessmentStatus);
+    await expect(wafReportsPage.wafReportAssessmentSubPage.score).toHaveText(
+      expectedAssessmentScore,
+      expectOptions,
+    )
+    await expect(wafReportsPage.wafReportAssessmentSubPage.url).toHaveText(
+      expectedAssessmentUrl,
+    )
+    await expect(wafReportsPage.wafReportAssessmentSubPage.status).toHaveText(
+      expectedAssessmentStatus,
+    )
 
     await wafReportsPage.wafReportAssessmentSubPage.clickGenerateReportButton()
     await downloadReport(mainPage, wafReportsPage)
