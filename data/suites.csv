@@ -1,2 +1,2 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","434","Verify Report History","chromium","Thu Feb 20 18:43:48 UTC 2025","failed","Thu Feb 20 18:43:48 UTC 2025","Report History Tests","cymulate-test.spec.ts","",""
+"","205","Verify Report History","chromium","Thu Feb 20 18:44:00 UTC 2025","failed","Thu Feb 20 18:44:01 UTC 2025","Report History Tests","cymulate-test.spec.ts","",""
