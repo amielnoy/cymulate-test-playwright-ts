@@ -4,16 +4,14 @@ import {GenerateReportSubPage} from './GenerateReportSubPage'
 import {WafReportAssessmentSubPage} from './WafReportAssessmentSubPage'
 
 export class WafReportsPage extends BasePage {
-  readonly page: Page
-  readonly generateReportSubPage: GenerateReportSubPage
-  readonly wafReportAssessmentSubPage: WafReportAssessmentSubPage
+    readonly generateReportSubPage: GenerateReportSubPage;
+    readonly wafReportAssessmentSubPage: WafReportAssessmentSubPage;
 
-  constructor(page: Page) {
-    super(page)
-    this.page = page
-    this.generateReportSubPage = new GenerateReportSubPage(page)
-    this.wafReportAssessmentSubPage = new WafReportAssessmentSubPage(page)
-  }
+    constructor(page: Page) {
+        super(page);
+        this.generateReportSubPage= new GenerateReportSubPage(page)
+        this.wafReportAssessmentSubPage= new WafReportAssessmentSubPage(page)
+    }
 
   getRowWithCompletedSibling(): Locator {
     return this.page

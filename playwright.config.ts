@@ -1,4 +1,5 @@
 import {defineConfig, devices} from '@playwright/test'
+import { PlaywrightTestConfig } from '@playwright/test';
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -10,6 +11,25 @@ import {defineConfig, devices} from '@playwright/test'
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+
+
+
+const RPconfig = {
+  apiKey: 'REPORT-PORTAL-2025_zRTrD7AHQaGJjwrVJv4sLjlhUb2yp6NIIJsFy_ecysEhKxdK6D22D3ekMcM4miUE',
+  endpoint: 'https://demo.reportportal.io/api/v1',
+  project: 'amielnoy_personal',
+  launch: 'Your launch name',
+  attributes: [
+    {
+      key: 'key',
+      value: 'value',
+    },
+    {
+      value: 'value',
+    },
+  ],
+  description: 'Your launch description',
+};
 
 export default defineConfig({
   testDir: './tests',
@@ -23,8 +43,8 @@ export default defineConfig({
   workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI
-    ? [['line'], ['allure-playwright']]
-    : [['line'], ['html'], ['allure-playwright']],
+    ? [['line'], ['allure-playwright'], ['@reportportal/agent-js-playwright', RPconfig]]
+    : [['line'], ['html'], ['allure-playwright'], ['@reportportal/agent-js-playwright', RPconfig]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */

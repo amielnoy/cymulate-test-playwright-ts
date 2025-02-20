@@ -1,10 +1,10 @@
 import {Page, Locator, test} from '@playwright/test'
 import {BasePage} from './BasePage'
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
 dotenv.config()
 
-export class LoginPage extends BasePage {
+export  class LoginPage extends BasePage {
   readonly email: Locator
   readonly password: Locator
   readonly signInButton: Locator
