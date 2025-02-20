@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.50.1",
+    "@reportportal/agent-js-playwright": "^5.1.11",
     "@types/mime-types": "^2.1.4",
     "@types/node": "^22.13.4",
     "@zerostep/playwright": "^0.1.5",
