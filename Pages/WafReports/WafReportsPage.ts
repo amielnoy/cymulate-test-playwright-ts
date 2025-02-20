@@ -1,7 +1,7 @@
-import { Page, Locator,test } from '@playwright/test';
-import { BasePage } from '../BasePage';
-import {GenerateReportSubPage} from "./GenerateReportSubPage";
-import {WafReportAssessmentSubPage} from "./WafReportAssessmentSubPage";
+import {Page, Locator, test} from '@playwright/test'
+import {BasePage} from '../BasePage'
+import {GenerateReportSubPage} from './GenerateReportSubPage'
+import {WafReportAssessmentSubPage} from './WafReportAssessmentSubPage'
 
 export class WafReportsPage extends BasePage {
     readonly generateReportSubPage: GenerateReportSubPage;
@@ -13,16 +13,20 @@ export class WafReportsPage extends BasePage {
         this.wafReportAssessmentSubPage= new WafReportAssessmentSubPage(page)
     }
 
-    getRowWithCompletedSibling(): Locator {
-        return this.page.locator('.table-row').filter({
-            has: this.page.locator('.attack-status:has-text("Completed")')
-        }).locator('a[href*="/cym/waf_category/action"]').first();
-    }
+  getRowWithCompletedSibling(): Locator {
+    return this.page
+      .locator('.table-row')
+      .filter({
+        has: this.page.locator('.attack-status:has-text("Completed")'),
+      })
+      .locator('a[href*="/cym/waf_category/action"]')
+      .first()
+  }
 
-    async clickRowWithCompletedSibling():Promise<void> {
-        await test.step('Click row with "Completed" as a sibling', async () => {
-            const targetRow = this.getRowWithCompletedSibling();
-            await targetRow.click();
-        });
-    }
+  async clickRowWithCompletedSibling(): Promise<void> {
+    await test.step('Click row with "Completed" as a sibling', async () => {
+      const targetRow = this.getRowWithCompletedSibling()
+      await targetRow.click()
+    })
+  }
 }

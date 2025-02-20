@@ -1,5 +1,5 @@
-import { Page, Locator, test } from '@playwright/test';
-import { BasePage } from './BasePage';
+import {Page, Locator, test} from '@playwright/test'
+import {BasePage} from './BasePage'
 
 export class ReportsPage extends BasePage {
     readonly webApplicationFirewallHistoryButton: Locator;
@@ -10,9 +10,10 @@ export class ReportsPage extends BasePage {
         this.webApplicationFirewallHistoryButton = page.locator('[data-module="waf"]').getByRole('link', { name: 'History' });
     }
 
-    async clickWebApplicationFireWallHistoryButton() {
-        await test.step('Click Web Application Firewall History Button', async () => {
-            await this.webApplicationFirewallHistoryButton.click();
-        });
-    }
+
+  async clickWebApplicationFireWallHistoryButton() {
+    await test.step('Click Web Application Firewall History Button', async () => {
+      await this.webApplicationFirewallHistoryButton.click()
+    })
+  }
 }

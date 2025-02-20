@@ -1,5 +1,5 @@
-import { Page, Locator, test } from '@playwright/test';
-import { BasePage } from '../BasePage';
+import {Page, Locator, test} from '@playwright/test'
+import {BasePage} from '../BasePage'
 
 export class WafReportAssessmentSubPage extends BasePage {
     readonly score: Locator;
@@ -21,4 +21,9 @@ export class WafReportAssessmentSubPage extends BasePage {
         });
     }
 
+  async clickGenerateReportButton(): Promise<void> {
+    await test.step('Click Generate Report button', async () => {
+      await this.generateReportButton.click()
+    })
+  }
 }

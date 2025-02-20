@@ -3,7 +3,6 @@ import * as util from 'util'
 import * as path from 'path'
 import * as fs from 'fs'
 import mime from 'mime-types'
-import {expect} from '@playwright/test'
 
 export function getDownloadFolderPath(): string {
   const homeDir = os.homedir()

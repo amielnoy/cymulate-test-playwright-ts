@@ -1,5 +1,5 @@
-import { Page, Locator, test } from '@playwright/test';
-import { BasePage } from '../BasePage';
+import {Page, Locator, test} from '@playwright/test'
+import {BasePage} from '../BasePage'
 
 export class GenerateReportSubPage extends BasePage {
     readonly score: Locator;
@@ -13,9 +13,9 @@ export class GenerateReportSubPage extends BasePage {
         this.csvButton = page.getByRole('button', { name: 'CSV' }).nth(0);
     }
 
-    async clickCsvButton() {
-        await test.step('Click CSV button', async () => {
-            await this.csvButton.click();
-        });
-    }
+  async clickCsvButton() {
+    await test.step('Click CSV button', async () => {
+      await this.csvButton.click()
+    })
+  }
 }

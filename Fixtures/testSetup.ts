@@ -1,4 +1,4 @@
-import {test as base, expect} from '@playwright/test'
+import {test as base} from '@playwright/test'
 // @ts-ignore
 import {LoginBuildingBlock} from '../BuildingBlocks/loginBuildingBlock'
 import {ReportsPage} from '../Pages/ReportsPage'
@@ -44,4 +44,4 @@ const test = base.extend<ITestFixtures>({
   },
 })
 
-export {test, expect}
+export default test
